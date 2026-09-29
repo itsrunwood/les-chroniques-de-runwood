@@ -264,4 +264,152 @@
             window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
         });
     });
+
+    /* Page galerie : recherche, filtre par étiquette, pagination */
+    var archive = $('.js-archive');
+
+    if (archive) {
+        var items = $$('.js-archive-item', archive);
+        var searchInput = $('.js-archive-search', archive);
+        var tagButtons = $$('.js-archive-tag', archive);
+        var countEl = $('.js-archive-count', archive);
+        var emptyEl = $('.js-archive-empty', archive);
+        var pager = $('.js-archive-pagination', archive);
+        var perPage = parseInt(archive.getAttribute('data-per-page'), 10) || 40;
+        var state = { q: '', tag: '', page: 1 };
+
+        var normalize = function (str) {
+            return String(str || '')
+                .replace(/<[^>]+>/g, ' ')
+                .toLowerCase()
+                .normalize('NFD').replace(/[̀-ͯ]/g, '');
+        };
+
+        items.forEach(function (item) {
+            item._search = normalize(item.getAttribute('data-search'));
+            item._tags = ' ' + (item.getAttribute('data-tags') || '').trim().split(/\s+/).join(' ') + ' ';
+        });
+
+        // État lu depuis l'adresse : galerie.html?tag=lore&q=roi&page=2
+        try {
+            var params = new URLSearchParams(window.location.search);
+            state.q = params.get('q') || '';
+            state.tag = params.get('tag') || '';
+            state.page = parseInt(params.get('page'), 10) || 1;
+        } catch (e) {}
+
+        if (searchInput) { searchInput.value = state.q; }
+
+        var saveState = function () {
+            try {
+                var params = new URLSearchParams();
+                if (state.q) { params.set('q', state.q); }
+                if (state.tag) { params.set('tag', state.tag); }
+                if (state.page > 1) { params.set('page', state.page); }
+                var qs = params.toString();
+                window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : ''));
+            } catch (e) {}
+        };
+
+        var pageButton = function (label, page, opts) {
+            var b = doc.createElement('button');
+            b.type = 'button';
+            b.className = 'archive__page';
+            b.textContent = label;
+            if (opts && opts.current) { b.setAttribute('aria-current', 'page'); b.disabled = true; }
+            if (opts && opts.disabled) { b.disabled = true; }
+            if (opts && opts.label) { b.setAttribute('aria-label', opts.label); }
+            b.addEventListener('click', function () {
+                state.page = page;
+                render();
+                archive.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+            });
+            return b;
+        };
+
+        var render = function () {
+            var terms = normalize(state.q).split(/\s+/).filter(Boolean);
+            var matches = items.filter(function (item) {
+                if (state.tag && item._tags.indexOf(' ' + state.tag + ' ') === -1) { return false; }
+                for (var t = 0; t < terms.length; t++) {
+                    if (item._search.indexOf(terms[t]) === -1) { return false; }
+                }
+                return true;
+            });
+
+            var pages = Math.max(1, Math.ceil(matches.length / perPage));
+            if (state.page > pages) { state.page = pages; }
+            if (state.page < 1) { state.page = 1; }
+            var from = (state.page - 1) * perPage;
+            var to = from + perPage;
+
+            items.forEach(function (item) { item.hidden = true; });
+            matches.slice(from, to).forEach(function (item) { item.hidden = false; });
+
+            tagButtons.forEach(function (btn) {
+                var active = (btn.getAttribute('data-tag') || '') === state.tag;
+                btn.classList.toggle('is-active', active);
+                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+
+            if (countEl) {
+                countEl.textContent = matches.length
+                    ? matches.length + (matches.length > 1 ? ' quêtes trouvées' : ' quête trouvée') + (pages > 1 ? ' — page ' + state.page + '/' + pages : '')
+                    : '';
+            }
+            if (emptyEl) { emptyEl.hidden = matches.length > 0; }
+
+            if (pager) {
+                pager.innerHTML = '';
+                pager.hidden = pages <= 1;
+                if (pages > 1) {
+                    pager.appendChild(pageButton('[←]', state.page - 1, { disabled: state.page === 1, label: 'Page précédente' }));
+                    for (var n = 1; n <= pages; n++) {
+                        if (n === 1 || n === pages || Math.abs(n - state.page) <= 2) {
+                            pager.appendChild(pageButton(String(n), n, { current: n === state.page, label: 'Page ' + n }));
+                        } else if (Math.abs(n - state.page) === 3) {
+                            var dots = doc.createElement('span');
+                            dots.className = 'archive__page';
+                            dots.textContent = '…';
+                            pager.appendChild(dots);
+                        }
+                    }
+                    pager.appendChild(pageButton('[→]', state.page + 1, { disabled: state.page === pages, label: 'Page suivante' }));
+                }
+            }
+
+            saveState();
+        };
+
+        var timer = null;
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                window.clearTimeout(timer);
+                timer = window.setTimeout(function () {
+                    state.q = searchInput.value.trim();
+                    state.page = 1;
+                    render();
+                }, 150);
+            });
+        }
+
+        tagButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var tag = btn.getAttribute('data-tag') || '';
+                state.tag = state.tag === tag ? '' : tag;
+                state.page = 1;
+                render();
+            });
+        });
+
+        $$('.js-archive-reset', archive).forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                state = { q: '', tag: '', page: 1 };
+                if (searchInput) { searchInput.value = ''; }
+                render();
+            });
+        });
+
+        render();
+    }
 })();

@@ -1111,3 +1111,109 @@ img.is-loaded { opacity: 1; }
     .logo { font-size: calc(.95rem * var(--logo-scale, 1)); white-space: nowrap; min-width: 0; }
     .top__inner { flex-wrap: wrap; }
 }
+
+/* --- Page galerie (modèle « Galerie des quêtes ») --- */
+.gallery-head { margin-bottom: 2rem; }
+
+.archive__controls {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border);
+}
+.archive__search {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    max-width: 34rem;
+}
+.archive__search-label { color: var(--accent); white-space: nowrap; font-size: .9rem; }
+.archive__tags { display: flex; flex-wrap: wrap; gap: .35rem .5rem; }
+.archive__tag, .archive__reset {
+    appearance: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    font: inherit;
+    font-size: .82rem;
+    padding: .2rem .55rem;
+    transition: border-color .15s, background-color .15s, color .15s;
+}
+.archive__tag:hover { border-color: var(--accent); color: var(--accent); }
+.archive__tag.is-active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.archive__tag-count { color: var(--gold); font-size: .9em; margin-left: .2em; }
+.archive__tag.is-active .archive__tag-count { color: var(--bg); opacity: .7; }
+.archive__status { color: var(--dim); font-size: .82rem; margin: 0; }
+.archive__status:empty { display: none; }
+.archive__reset { border: 0; color: var(--accent); padding: 0; }
+.archive__empty { color: var(--dim); padding: 2rem 0; }
+
+.archive__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.8rem 1.4rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.archive__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.archive__grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 64em) {
+    .archive__grid, .archive__grid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 46em) {
+    .archive__grid, .archive__grid--3, .archive__grid--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1rem; }
+}
+@media (max-width: 21em) {
+    .archive__grid, .archive__grid--3, .archive__grid--5 { grid-template-columns: minmax(0, 1fr); }
+}
+.js-archive-item[hidden] { display: none; }
+
+.card { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.card__link { display: flex; flex-direction: column; gap: .5rem; color: var(--heading); }
+.card__image { aspect-ratio: 4 / 3; padding: 3px; }
+.card__image img { width: 100%; height: 100%; object-fit: cover; }
+.card__link:hover .card__image { border-color: var(--accent); }
+.img-filter--terminal .card__link:hover .card__image img { filter: none; }
+.card__image--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dim);
+    font-size: 1.6rem;
+    background:
+        repeating-linear-gradient(45deg, transparent 0 6px, rgba(var(--accent-rgb), .05) 6px 7px),
+        var(--surface);
+}
+.card__link:hover .card__image--empty { color: var(--accent); }
+.card__meta { display: flex; gap: .5rem; color: var(--dim); font-size: .75rem; }
+.card__badge { color: var(--gold); }
+.card__title {
+    font-family: var(--font-headings);
+    font-weight: var(--heading-weight, 400);
+    font-size: calc(.98rem * var(--heading-scale, 1));
+    line-height: 1.3;
+    color: var(--heading);
+}
+.card__link:hover .card__title { color: var(--accent); }
+.card__excerpt { color: var(--text); font-size: .8rem; line-height: 1.6; }
+.card__excerpt p { margin: 0; }
+.card__tags { font-size: .72rem; gap: .1rem .6rem; }
+
+.archive__pagination { grid-template-columns: auto; justify-content: center; gap: .3rem; display: flex; flex-wrap: wrap; }
+.archive__pagination[hidden] { display: none; }
+.archive__page {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: var(--accent);
+    cursor: pointer;
+    font: inherit;
+    font-size: .88rem;
+    padding: .15rem .45rem;
+}
+.archive__page:hover { background: var(--accent); color: var(--bg); }
+.archive__page[aria-current="page"] { color: var(--bg); background: var(--accent); cursor: default; }
+.archive__page:disabled:not([aria-current]) { color: var(--dim); opacity: .5; cursor: default; background: none; }
