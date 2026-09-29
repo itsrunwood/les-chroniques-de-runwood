@@ -3,12 +3,40 @@
     <title>Les chroniques de runwood</title>
     <link href="https://www.leschroniquesderunwood.fr/feed.xml" rel="self" />
     <link href="https://www.leschroniquesderunwood.fr" />
-    <updated>2026-09-29T18:29:09+02:00</updated>
+    <updated>2026-09-29T19:18:22+02:00</updated>
     <author>
         <name>runwood</name>
     </author>
     <id>https://www.leschroniquesderunwood.fr</id>
 
+    <entry>
+        <title>Article 0.1 : Mon retour</title>
+        <author>
+            <name>runwood</name>
+        </author>
+        <link href="https://www.leschroniquesderunwood.fr/article-01-mon-retour/"/>
+        <id>https://www.leschroniquesderunwood.fr/article-01-mon-retour/</id>
+        <media:content url="https://www.leschroniquesderunwood.fr/media/posts/7/news-the-elden-ring-preview-general-consensus-it-is-open-world-goodness.jpg" medium="image" />
+            <category term="Information"/>
+            <category term="Hors Série"/>
+
+        <updated>2026-09-29T19:17:43+02:00</updated>
+            <summary type="html">
+                <![CDATA[
+                        <img src="https://www.leschroniquesderunwood.fr/media/posts/7/news-the-elden-ring-preview-general-consensus-it-is-open-world-goodness.jpg" alt="" />
+                    Quel bonheur de reprendre l'écriture de ce blog. Je vous avoue qu'il a failli finir dans les tréfonds des lost media d'internet. La date d'expiration de l'hébergement et du nom de domaine était prévue pour le 30/09/2026, en gros le&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://www.leschroniquesderunwood.fr/media/posts/7/news-the-elden-ring-preview-general-consensus-it-is-open-world-goodness.jpg" class="type:primaryImage" alt="" /></p>
+                <figure class="post__image post__image--center"><img loading="lazy"  src="https://www.leschroniquesderunwood.fr/media/posts/7/Design_sans_titre__2_-removebg-preview-2.png" alt="" width="300" height="100" sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://www.leschroniquesderunwood.fr/media/posts/7/responsive/Design_sans_titre__2_-removebg-preview-2-xs.png 640w ,https://www.leschroniquesderunwood.fr/media/posts/7/responsive/Design_sans_titre__2_-removebg-preview-2-sm.png 768w ,https://www.leschroniquesderunwood.fr/media/posts/7/responsive/Design_sans_titre__2_-removebg-preview-2-md.png 1024w ,https://www.leschroniquesderunwood.fr/media/posts/7/responsive/Design_sans_titre__2_-removebg-preview-2-lg.png 1366w ,https://www.leschroniquesderunwood.fr/media/posts/7/responsive/Design_sans_titre__2_-removebg-preview-2-xl.png 1600w ,https://www.leschroniquesderunwood.fr/media/posts/7/responsive/Design_sans_titre__2_-removebg-preview-2-2xl.png 1920w"></figure>
+<p dir="ltr">Quel bonheur de reprendre l'écriture de ce blog. Je vous avoue qu'il a failli finir dans les tréfonds des lost media d'internet. La date d'expiration de l'hébergement et du nom de domaine était prévue pour le 30/09/2026, en gros le lendemain de l'écriture de cet article.<br>Je pense qu'on peut remercier "Vikah" qui est arrivé - par je ne sais quel moyen - sur mon blog (après 1 an sans activité visible) et qui a pris l'initiative de m'écrire deux commentaires, ça m'a un peu bouleversé j'avoue (le mot est un peu abusé ahah). Mais ses commentaires sont tombés à pic, dans un moment difficile personnellement. J'avais donc besoin de me replonger dans tout ça, pour me recentrer, pour créer et écrire. Je l'ai interprété comme un signe pour reprendre en main ce blog. Vous êtes donc aujourd'hui sur un tout nouveau blog, non plus hébergé sur WordPress, pour me permettre de pas mettre trop d'argent (la France à Macron, tu connais) et me permettre d'avoir encore ma liberté créative sur l'esthétique du blog mais aussi dans la facilité à écrire les articles (tout passe par Publii).<br>Alors pendant cette année, j'ai délaissé le blog. Mais j'ai quand même fait deux trois choses en lien avec la quête initiale. Déjà et pas des moindres, j'ai fini Elden Ring (pas le DLC), j'ai avancé Berserk, mais j'ai pas fini et j'ai acheté quelques livres en lien avec tout ça. J'ai wishlist des jeux sur Steam et j'ai peut-être envie de parler plus aujourd'hui d'horreur, enfin comme je l'aime. De l'horreur médiévale, mais aussi tout ce qui peut toucher au liminal, l'horreur d'internet etc. Donc tout n'est pas perdu, j'ai des choses à dire et surtout j'ai envie de vous les écrire !</p>
+<p dir="ltr">Donc je vous conseille de vous abonner à l'Instagram, c'est là que vous allez avoir facilement les notifications des nouveaux articles.<br>C'est ici ➡️ <a href="https://www.instagram.com/chroniques_runwood">instagram.com/chroniques_runwood</a></p>
+<p dir="ltr"><br>Merci à tous les lecteurs, j'ai hâte de reprendre tout ça en main !</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Observation 2 : Vermis</title>
         <author>
@@ -17,6 +45,7 @@
         <link href="https://www.leschroniquesderunwood.fr/observation-2/"/>
         <id>https://www.leschroniquesderunwood.fr/observation-2/</id>
         <media:content url="https://www.leschroniquesderunwood.fr/media/posts/3/DSCF3079-min-1-1024x683.webp" medium="image" />
+            <category term="Livre"/>
 
         <updated>2025-11-20T18:17:12+01:00</updated>
             <summary type="html">
@@ -67,6 +96,8 @@
         <link href="https://www.leschroniquesderunwood.fr/observation-1/"/>
         <id>https://www.leschroniquesderunwood.fr/observation-1/</id>
         <media:content url="https://www.leschroniquesderunwood.fr/media/posts/2/ss_3fba6dcc2b1c3db49a47dc646d7152af4a98888b.1920x1080-3.jpg" medium="image" />
+            <category term="Recherche"/>
+            <category term="Général"/>
 
         <updated>2025-10-19T09:17:34+02:00</updated>
             <summary type="html">
@@ -198,6 +229,8 @@
         <link href="https://www.leschroniquesderunwood.fr/article-0/"/>
         <id>https://www.leschroniquesderunwood.fr/article-0/</id>
         <media:content url="https://www.leschroniquesderunwood.fr/media/posts/1/IMG_0240-1024x768.png" medium="image" />
+            <category term="Information"/>
+            <category term="Hors Série"/>
 
         <updated>2025-10-05T08:32:01+02:00</updated>
             <summary type="html">
